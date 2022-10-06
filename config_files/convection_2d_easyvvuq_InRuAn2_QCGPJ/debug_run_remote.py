@@ -74,6 +74,7 @@ def init_run_analyse_campaign(work_dir=None, sampler_inputs_dir=None , inpt=None
     machine_name = inpt[0]
     run_command = inpt[1]
     convection_2d_exec = inpt[2]
+    venv_path = inpt[3]
 
 
     campaign_params = load_campaign_params(sampler_inputs_dir=sampler_inputs_dir, machine=machine_name)
@@ -240,7 +241,7 @@ def init_run_analyse_campaign(work_dir=None, sampler_inputs_dir=None , inpt=None
     # print("Time for phase 2 = %.3f" % (time_end - time_start))
     # time_start = time.time()
     # # campaign.execute(pool=client).collate()
-    # with QCGPJPool(template_params={'venv': '/mnt/lustre/a2fs-work2/work/e723/e723/kevinb/venv_kevin'}) as qcgpj:
+    # with QCGPJPool(template_params={'venv': venv_path}) as qcgpj:
     #     campaign.execute(pool=qcgpj).collate(progress_bar=True)
     #
     #
@@ -446,12 +447,13 @@ def load_campaign_params(sampler_inputs_dir=None, machine=None):
 if __name__ == "__main__":
     # CRED = '\33[31m'
     # CEND = '\33[0m'
-    # # $machine_name    '$run_command'   $convection_2d_exec
+    # # $machine_name    '$run_command'   $convection_2d_exec   $venv_path
 
     inpt = []
     inpt.append(sys.argv[1])
     inpt.append(sys.argv[2])
     inpt.append(sys.argv[3])
+    inpt.append(sys.argv[4])
 
     # work_dir1 = os.path.join(os.path.dirname(__file__))
     work_dir1 = os.getcwd()

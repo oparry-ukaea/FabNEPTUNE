@@ -32,7 +32,7 @@ else
 fi
 
 # Execute easyvvuq sampler via Python script
-python3     convection_2d_easyvvuq_init_run_analyse_remote.py     $machine_name    '$run_command_remote'   $convection_2d_exec
+python3     convection_2d_easyvvuq_init_run_analyse_remote.py     $machine_name    '$run_command_remote'   $convection_2d_exec   $venv_dir
 
 end_time="$(date -u +%s.%n)"
 elapsed="$(bc <<<"$end_time-$start_time")"

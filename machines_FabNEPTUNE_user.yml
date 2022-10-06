@@ -103,6 +103,7 @@ archer2:
 
   local_pkg_dir:    "/mnt/lustre/a2fs-work2/work/e723/e723/shared/.local"
   miniconda_dir:    "/mnt/lustre/a2fs-work2/work/e723/e723/shared/miniconda_install/miniconda"
+  venv_dir     :    "/mnt/lustre/a2fs-work2/work/e723/e723/shared/venvs/seavea/"
   nektar_build_dir: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/nektar_install/nektarpp/build"
 
   FabNEPTUNE_params:
