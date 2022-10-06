@@ -98,8 +98,8 @@ cirrus:
 
 archer2:
     # location of lmp_serial on the remote machine
-  convection_2d_exec: "/mnt/lustre/a2fs-work2/work/e723/e723/kevinb/nektarpp/build/dist/bin/IncNavierStokesSolver"
-  convection_3d_exec: "/mnt/lustre/a2fs-work2/work/e723/e723/kevinb/nektarpp/build/dist/bin/IncNavierStokesSolver"
+  convection_2d_exec: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/Kevin_data/nektar++/nektarpp/build/dist/bin/IncNavierStokesSolver"
+  convection_3d_exec: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/Kevin_data/nektar++/nektarpp/build/dist/bin/IncNavierStokesSolver"
 
   FabNEPTUNE_params:
     convection_input: "convection_Xd.xml"
