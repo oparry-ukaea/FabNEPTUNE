@@ -88,9 +88,9 @@ def init_run_analyse_campaign(work_dir=None, sampler_inputs_dir=None , inpt=None
         work_dir,
         'CONVECTION_easyvvuq_%s' % (campaign_params['sampler_name'])
     )
-    # if os.path.exists(campaign_work_dir):
-    #     rmtree(campaign_work_dir)
-    # os.mkdir(campaign_work_dir)
+    if os.path.exists(campaign_work_dir):
+        rmtree(campaign_work_dir)
+    os.mkdir(campaign_work_dir)
 
     print(CRED + 'campaign_work_dir -> ', campaign_work_dir + CEND)
     db_location = "sqlite:///" + campaign_work_dir + "/campaign.db"
