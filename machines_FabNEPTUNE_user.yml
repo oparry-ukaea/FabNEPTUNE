@@ -40,8 +40,8 @@ default:
 
 localhost:
 
-  convection_2d_exec: "IncNavierStokerSolver"
-  convection_3d_exec: "IncNavierStokerSolver"
+  convection_2d_exec: "IncNavierStokesSolver"
+  convection_3d_exec: "IncNavierStokesSolver"
 
   FabNEPTUNE_params:
     convection_input: "convection_Xd.xml"
@@ -53,8 +53,8 @@ localhost:
 
 eagle_hidalgo:
   # location of lmp_serial on the remote machine
-  convection_2d_exec: "IncNavierStokerSolver"
-  convection_3d_exec: "IncNavierStokerSolver"
+  convection_2d_exec: "IncNavierStokesSolver"
+  convection_3d_exec: "IncNavierStokesSolver"
 
 
   cores: 1
@@ -73,8 +73,8 @@ eagle_hidalgo:
 
 eagle_vecma:
   # location of lmp_serial on the remote machine
-  convection_2d_exec: "IncNavierStokerSolver"
-  convection_3d_exec: "IncNavierStokerSolver"
+  convection_2d_exec: "IncNavierStokesSolver"
+  convection_3d_exec: "IncNavierStokesSolver"
   cores: 28
   # format days-hours:minutes:seconds
   job_wall_time : "0-0:10:00"
@@ -89,8 +89,8 @@ eagle_vecma:
 
 cirrus:
     # location of lmp_serial on the remote machine
-  convection_2d_exec: "IncNavierStokerSolver"
-  convection_3d_exec: "IncNavierStokerSolver"
+  convection_2d_exec: "IncNavierStokesSolver"
+  convection_3d_exec: "IncNavierStokesSolver"
 
   modules:
       # list of modules to be loaded on remote machine
@@ -132,8 +132,8 @@ archer2:
 
 ohm:
     # location of lmp_serial on the remote machine
-  convection_2d_exec: "IncNavierStokerSolver"
-  convection_3d_exec: "IncNavierStokerSolver"
+  convection_2d_exec: "IncNavierStokesSolver"
+  convection_3d_exec: "IncNavierStokesSolver"
 
   cores: 2
 
@@ -142,8 +142,8 @@ ohm:
 
 Kathleen:
     # location of lmp_serial on the remote machine
-  convection_2d_exec: "IncNavierStokerSolver"
-  convection_3d_exec: "IncNavierStokerSolver"
+  convection_2d_exec: "IncNavierStokesSolver"
+  convection_3d_exec: "IncNavierStokesSolver"
   cores: 28
 
   modules:
