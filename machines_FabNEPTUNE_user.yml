@@ -97,7 +97,7 @@ cirrus:
       loaded: [ "anaconda/python3"]
 
 archer2:
-    # location of lmp_serial on the remote machine
+  # Location of Nektar's incompressible Navier-Stokes solver executable
   convection_2d_exec: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/nektar_install/nektarpp/build/dist/bin/IncNavierStokesSolver"
   convection_3d_exec: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/nektar_install/nektarpp/build/dist/bin/IncNavierStokesSolver"
 
@@ -111,9 +111,21 @@ archer2:
     convection_3d_input: "convection_3d.xml"
     sweep_dir_name: "SWEEP"
 
+  # Job params
+  # N.B. *corespernode is misnamed* - it actually gets passed to slurm's --tasks-per-node 
+  # Suggested values:
+  #               cores   corespernode  job_wall_time
+  #   2D test     128     1             00:01:00
+  #   2D ensemble 128     1             00:01:00
+  #   3D test     256     16            04:00:00
+  cores: 512
+  corespernode: 16
+  job_wall_time: "04:00:00"
+
+  run_command_remote: "srun --distribution=block:block --hint=nomultithread"
+
 #  run_command_SCEMa: "srun --nodes=1 --ntasks=1 --oversubscribe --mem=1500M"  <----- dask
-  run_command_remote: "srun --nodes=1 --ntasks=1 --exclusive --oversubscribe --mem=25000M"
-#  run_command_remote: "srun --distribution=block:block --hint=nomultithread"
+#  run_command_remote: "srun --nodes=1 --ntasks=1 --exclusive --oversubscribe --mem=25000M"
 #  run_command_remote: "srun --nodes=1 --ntasks=1 --exclusive --oversubscribe --mem=5500M"
 
 
