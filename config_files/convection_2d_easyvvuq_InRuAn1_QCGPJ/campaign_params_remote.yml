@@ -19,6 +19,7 @@ encoder_delimiter: "@"
 encoder_template_fname : "convection_2d_remote.template"
 encoder_target_filename: "convection_2d.xml"
 decoder_target_filename: "output.csv"
+mesh_fname: "convection_2d_mesh.xml"
 
 decoder_output_columns: ['F1-press_L']
 

@@ -100,7 +100,7 @@ def init_run_analyse_campaign(work_dir=None, sampler_inputs_dir=None , inpt=None
     campaign = uq.Campaign(name=campaign_params['campaign_name'], db_location=db_location,
                            work_dir=campaign_work_dir)
 
-    # Create an encoder and decoder
+    # Encoder to generate session file
     encoder = uq.encoders.GenericEncoder(
         template_fname=os.path.join(sampler_inputs_dir, campaign_params[
                                     'encoder_template_fname']),
@@ -108,6 +108,15 @@ def init_run_analyse_campaign(work_dir=None, sampler_inputs_dir=None , inpt=None
         target_filename=campaign_params['encoder_target_filename']
     )
 
+    # Encode to copy mesh file
+    mesh_copier = uq.encoders.GenericEncoder(
+        template_fname=os.path.join(sampler_inputs_dir, campaign_params[
+                                    'mesh_fname']),
+        delimiter=campaign_params['encoder_delimiter'],
+        target_filename=campaign_params['mesh_fname']
+    )
+
+    # Decoder to retrieve results
     decoder = uq.decoders.SimpleCSV(
         target_filename=campaign_params['decoder_target_filename'],
         output_columns=campaign_params['decoder_output_columns']
@@ -130,21 +139,22 @@ def init_run_analyse_campaign(work_dir=None, sampler_inputs_dir=None , inpt=None
         print('\x1b[6;30;45m' + '.........................' + '\x1b[0m')
         print('\x1b[6;30;45m' + 'running on local machine!' + '\x1b[0m')
         print('\x1b[6;30;45m' + '.........................' + '\x1b[0m')
-        execute = uq.actions.ExecuteLocal(
-            'python3 {}/easyvvuq_convection_2d_RUN_localhost.py {} {} {}'.format(os.getcwd(),
-            campaign_params['encoder_target_filename'], this_path, inpt[:3]))
+        cmd = 'python3 {}/easyvvuq_convection_2d_RUN_localhost.py {} {} {}'.format(os.getcwd(), campaign_params['encoder_target_filename'],campaign_params['mesh_fname'], this_path, inpt[:3])
+        execute = uq.actions.ExecuteLocal(cmd)
 
     else:
         print('\x1b[6;30;45m' + '..........................' + '\x1b[0m')
         print('\x1b[6;30;45m' + 'running on remote machine!' + '\x1b[0m')
         print('\x1b[6;30;45m' + '..........................' + '\x1b[0m')
-        execute = uq.actions.ExecuteLocal(
-            'python3 {}/easyvvuq_convection_2d_RUN_remote.py {} {} {}'.format(os.getcwd(),
-            campaign_params['encoder_target_filename'], this_path, inpt[:3]))
+        cmd = 'python3 {}/easyvvuq_convection_2d_RUN_remote.py {} {} {}'.format(os.getcwd(), campaign_params['encoder_target_filename'], campaign_params['encoder_target_filename'],campaign_params['mesh_fname'], this_path, inpt[:3])
+        execute = uq.actions.ExecuteLocal(cmd)
+
+    
 
     actions = uq.actions.Actions(
         uq.actions.CreateRunDirectory(root=campaign_work_dir, flatten=True),
         uq.actions.Encode(encoder),
+        uq.actions.Encode(mesh_copier),
         execute,
         uq.actions.Decode(decoder))
 
