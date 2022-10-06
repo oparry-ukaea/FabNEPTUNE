@@ -2,6 +2,18 @@
 cd $job_results
 $run_prefix
 
+export OMP_NUM_THREADS=1
+export FI_MR_CACHE_MAX_COUNT=0
+
+# Add nektar libraries to the ld library path
+export LD_LIBRARY_PATH=/opt/gcc/10.2.0/snos/lib64:$nektar_build_dir/ThirdParty/dist/lib:$nektar_build_dir/dist/lib64:$LD_LIBRARY_PATH
+
+# Add nektar binaries to the path
+export PATH="$nektar_build_dir/dist/bin:$PATH"
+# Add miniconda binaries to the path
+export PATH="$minconda_dir/bin:$PATH"
+# Add locally installed (python) packages to the path
+export PATH="$local_pkg_dir/.local/bin:$PATH"
 /usr/bin/env > env.log
 
 start_time="$(date -u +%s.%n)"
