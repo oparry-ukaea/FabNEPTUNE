@@ -10,7 +10,7 @@ export LD_LIBRARY_PATH=/opt/gcc/10.2.0/snos/lib64:$nektar_build_dir/ThirdParty/d
 # Add nektar binaries to the path
 export PATH="$nektar_build_dir/dist/bin:$PATH"
 # Add miniconda binaries to the path
-export PATH="$minconda_dir/bin:$PATH"
+export PATH="$miniconda_dir/bin:$PATH"
 # Add locally installed (python) packages to the path
 export PATH="$local_pkg_dir/.local/bin:$PATH"
 

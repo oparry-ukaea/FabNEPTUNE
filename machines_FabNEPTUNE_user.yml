@@ -101,8 +101,8 @@ archer2:
   convection_2d_exec: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/nektar_install/nektarpp/build/dist/bin/IncNavierStokesSolver"
   convection_3d_exec: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/nektar_install/nektarpp/build/dist/bin/IncNavierStokesSolver"
 
-  local_pkg_dir: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/.local"
-  minconda_dir:     "/mnt/lustre/a2fs-work2/work/e723/e723/shared/miniconda3"
+  local_pkg_dir:    "/mnt/lustre/a2fs-work2/work/e723/e723/shared/.local"
+  miniconda_dir:    "/mnt/lustre/a2fs-work2/work/e723/e723/shared/miniconda_install/miniconda"
   nektar_build_dir: "/mnt/lustre/a2fs-work2/work/e723/e723/shared/nektar_install/nektarpp/build"
 
   FabNEPTUNE_params:
