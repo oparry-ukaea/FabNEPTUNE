@@ -9,10 +9,18 @@ echo "Start $convection_2d_exec program..."
 start_time="$(date -u +%s.%n)"
 echo "input xml file name:  $convection_2d_input"
 
-# executing easyvvuq sampler
-python3 --version
-which python3
-/home/kevin/anaconda3/envs/py38/bin/python3.8   convection_2d_easyvvuq_init_run_analyse_local.py     $machine_name    '$run_command'   $convection_2d_exec
+# Ensure python3 is on the path
+pyinterp=$(which python3)
+if [ -n "$pyinterp" ]; then
+    pyversion=$(python3 --version) 
+    echo "Using [$pyversion] interpreter at [$pyinterp]"
+else
+    echo "python3 not found"
+    exit 1
+fi
+
+# Execute easyvvuq sampler via Python script
+python3   convection_2d_easyvvuq_init_run_analyse_local.py     $machine_name    '$run_command'   $convection_2d_exec
 
 end_time="$(date -u +%s.%n)"
 elapsed="$(bc <<<"$end_time-$start_time")"
